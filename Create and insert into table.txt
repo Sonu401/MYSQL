@@ -1,0 +1,74 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sonu               |
+| sonu1              |
+| sonudb             |
+| sys                |
++--------------------+
+7 rows in set (0.01 sec)
+
+mysql> create database amit;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| amit               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sonu               |
+| sonu1              |
+| sonudb             |
+| sys                |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use amit;
+Database changed
+mysql> create table student(name varchar(20),id int not null primary key,address varchar(49));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc amit;
+ERROR 1146 (42S02): Table 'amit.amit' doesn't exist
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| id      | int         | NO   | PRI | NULL    |       |
+| address | varchar(49) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> insert into student(id,name,address)value(90,"sonu","kushinagar");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from student;
++------+----+------------+
+| name | id | address    |
++------+----+------------+
+| sonu | 90 | kushinagar |
++------+----+------------+
+1 row in set (0.00 sec)
+
+mysql>
