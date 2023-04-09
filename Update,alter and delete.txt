@@ -1,0 +1,195 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 20
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| amit               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sonu               |
+| sonu1              |
+| sonudb             |
+| sys                |
++--------------------+
+8 rows in set (0.01 sec)
+
+mysql> use sonu;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_sonu |
++----------------+
+| student        |
++----------------+
+1 row in set (0.02 sec)
+
+mysql> select*from student;
++------+----+------------+------------+
+| name | id | address    | rollnumber |
++------+----+------------+------------+
+| amit | 89 | tamkuhiraj |       NULL |
++------+----+------------+------------+
+1 row in set (0.01 sec)
+
+mysql> update student set address='kushinagar' where id=89;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++------+----+------------+------------+
+| name | id | address    | rollnumber |
++------+----+------------+------------+
+| amit | 89 | kushinagar |       NULL |
++------+----+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> alter table student add phonenumber int(11);
+Query OK, 0 rows affected, 1 warning (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> select*from student;
++------+----+------------+------------+-------------+
+| name | id | address    | rollnumber | phonenumber |
++------+----+------------+------------+-------------+
+| amit | 89 | kushinagar |       NULL |        NULL |
++------+----+------------+------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> update student set rollnumber=7 where id=89;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++------+----+------------+------------+-------------+
+| name | id | address    | rollnumber | phonenumber |
++------+----+------------+------------+-------------+
+| amit | 89 | kushinagar |          7 |        NULL |
++------+----+------------+------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> update student set phonenumber=6388735208 where id=89;
+ERROR 1264 (22003): Out of range value for column 'phonenumber' at row 1
+mysql> update student set phonenumber=123 where id=89;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++------+----+------------+------------+-------------+
+| name | id | address    | rollnumber | phonenumber |
++------+----+------------+------------+-------------+
+| amit | 89 | kushinagar |          7 |         123 |
++------+----+------------+------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> alter table student modify column phonenumber int(50);
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> desc student;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| name        | varchar(20) | YES  |     | NULL    |       |
+| id          | int         | NO   | PRI | NULL    |       |
+| address     | varchar(40) | YES  |     | NULL    |       |
+| rollnumber  | int         | YES  |     | NULL    |       |
+| phonenumber | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> select*from student;
++------+----+------------+------------+-------------+
+| name | id | address    | rollnumber | phonenumber |
++------+----+------------+------------+-------------+
+| amit | 89 | kushinagar |          7 |         123 |
++------+----+------------+------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> delete from student where rollnumber=7;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from student;
+Empty set (0.00 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_sonu |
++----------------+
+| student        |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> desc student;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| name        | varchar(20) | YES  |     | NULL    |       |
+| id          | int         | NO   | PRI | NULL    |       |
+| address     | varchar(40) | YES  |     | NULL    |       |
+| rollnumber  | int         | YES  |     | NULL    |       |
+| phonenumber | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into student(name,id,address,rollnumber,phonenumber)values("sonu",89,"kushinagar",8,765);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from student;
++------+----+------------+------------+-------------+
+| name | id | address    | rollnumber | phonenumber |
++------+----+------------+------------+-------------+
+| sonu | 89 | kushinagar |          8 |         765 |
++------+----+------------+------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student(name,id,address,rollnumber,phonenumber)values("amit",90,"tamkuhiraj",5,234);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from student;
++------+----+------------+------------+-------------+
+| name | id | address    | rollnumber | phonenumber |
++------+----+------------+------------+-------------+
+| sonu | 89 | kushinagar |          8 |         765 |
+| amit | 90 | tamkuhiraj |          5 |         234 |
++------+----+------------+------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student(name,id,address,rollnumber,phonenumber)values("manu",67,"harpur",7,112);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from student;
++------+----+------------+------------+-------------+
+| name | id | address    | rollnumber | phonenumber |
++------+----+------------+------------+-------------+
+| manu | 67 | harpur     |          7 |         112 |
+| sonu | 89 | kushinagar |          8 |         765 |
+| amit | 90 | tamkuhiraj |          5 |         234 |
++------+----+------------+------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> delete from student where id=67;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from student;
++------+----+------------+------------+-------------+
+| name | id | address    | rollnumber | phonenumber |
++------+----+------------+------------+-------------+
+| sonu | 89 | kushinagar |          8 |         765 |
+| amit | 90 | tamkuhiraj |          5 |         234 |
++------+----+------------+------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql>
