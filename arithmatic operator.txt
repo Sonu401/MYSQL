@@ -1,0 +1,176 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| amit               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sonu               |
+| sonu1              |
+| sonudb             |
+| sys                |
++--------------------+
+8 rows in set (0.04 sec)
+
+mysql> create database sonucoding;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| amit               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sonu               |
+| sonu1              |
+| sonucoding         |
+| sonudb             |
+| sys                |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> use sonucoding;
+Database changed
+mysql> create table employee(emp_name varchar(20),emp_salary int,emp_city varchar(10),emp_id int);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_sonucoding |
++----------------------+
+| employee             |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> desc employee;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_salary | int         | YES  |     | NULL    |       |
+| emp_city   | varchar(10) | YES  |     | NULL    |       |
+| emp_id     | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into employee values('sonu',50000,'kushinagar',90);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc employee;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_salary | int         | YES  |     | NULL    |       |
+| emp_city   | varchar(10) | YES  |     | NULL    |       |
+| emp_id     | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> select*from employee;
++----------+------------+------------+--------+
+| emp_name | emp_salary | emp_city   | emp_id |
++----------+------------+------------+--------+
+| sonu     |      50000 | kushinagar |     90 |
++----------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into employee values('amit',70000,'lucknow',66);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from employee;
++----------+------------+------------+--------+
+| emp_name | emp_salary | emp_city   | emp_id |
++----------+------------+------------+--------+
+| sonu     |      50000 | kushinagar |     90 |
+| amit     |      70000 | lucknow    |     66 |
++----------+------------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into employee values('manu',60000,'harpur',55),('abhi',80000,'ayodhya',88);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select*from employee;
++----------+------------+------------+--------+
+| emp_name | emp_salary | emp_city   | emp_id |
++----------+------------+------------+--------+
+| sonu     |      50000 | kushinagar |     90 |
+| amit     |      70000 | lucknow    |     66 |
+| manu     |      60000 | harpur     |     55 |
+| abhi     |      80000 | ayodhya    |     88 |
++----------+------------+------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select emp_salary+1000 as emp_salary_new from employee;
++----------------+
+| emp_salary_new |
++----------------+
+|          51000 |
+|          71000 |
+|          61000 |
+|          81000 |
++----------------+
+4 rows in set (0.00 sec)
+
+mysql> select emp_salary-1000 as emp_salary_new from employee;
++----------------+
+| emp_salary_new |
++----------------+
+|          49000 |
+|          69000 |
+|          59000 |
+|          79000 |
++----------------+
+4 rows in set (0.01 sec)
+
+mysql> select emp_salary*2 as emp_salary_new from employee;
++----------------+
+| emp_salary_new |
++----------------+
+|         100000 |
+|         140000 |
+|         120000 |
+|         160000 |
++----------------+
+4 rows in set (0.00 sec)
+
+mysql> select emp_salary/2 as emp_salary_new from employee;
++----------------+
+| emp_salary_new |
++----------------+
+|     25000.0000 |
+|     35000.0000 |
+|     30000.0000 |
+|     40000.0000 |
++----------------+
+4 rows in set (0.01 sec)
+
+mysql> select emp_salary%34567 as emp_salary_new from employee;
++----------------+
+| emp_salary_new |
++----------------+
+|          15433 |
+|            866 |
+|          25433 |
+|          10866 |
++----------------+
+4 rows in set (0.00 sec)
+
+mysql>
