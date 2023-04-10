@@ -1,0 +1,83 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 22
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| amit               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sonu               |
+| sonu1              |
+| sonucoding         |
+| sonudb             |
+| sys                |
++--------------------+
+9 rows in set (0.02 sec)
+
+mysql> use sonucoding;
+Database changed
+mysql> select*from employee;
++----------+------------+------------+--------+
+| emp_name | emp_salary | emp_city   | emp_id |
++----------+------------+------------+--------+
+| sonu     |      50000 | kushinagar |     90 |
+| amit     |      70000 | lucknow    |     66 |
+| manu     |      60000 | harpur     |     55 |
+| abhi     |      80000 | ayodhya    |     88 |
++----------+------------+------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select emp_id,emp_name from employee where emp_salary>all(select emp_salary from employee where emp_city='kushinagar');
++--------+----------+
+| emp_id | emp_name |
++--------+----------+
+|     66 | amit     |
+|     55 | manu     |
+|     88 | abhi     |
++--------+----------+
+3 rows in set (0.01 sec)
+
+mysql> select*from employee where emp_salary=50000 and emp_city='kushinagar';
++----------+------------+------------+--------+
+| emp_name | emp_salary | emp_city   | emp_id |
++----------+------------+------------+--------+
+| sonu     |      50000 | kushinagar |     90 |
++----------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select*from employee where emp_salary=50000 or emp_city='tamkuhi';
++----------+------------+------------+--------+
+| emp_name | emp_salary | emp_city   | emp_id |
++----------+------------+------------+--------+
+| sonu     |      50000 | kushinagar |     90 |
++----------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select*from employee where emp_salary=50000 and emp_city='lucknow';
+Empty set (0.00 sec)
+
+mysql> select*from employee where emp_salary between 50000 and 80000;
++----------+------------+------------+--------+
+| emp_name | emp_salary | emp_city   | emp_id |
++----------+------------+------------+--------+
+| sonu     |      50000 | kushinagar |     90 |
+| amit     |      70000 | lucknow    |     66 |
+| manu     |      60000 | harpur     |     55 |
+| abhi     |      80000 | ayodhya    |     88 |
++----------+------------+------------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
